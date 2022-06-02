@@ -1,0 +1,5 @@
+numpy
+matplotlib
+astropy>4.0
+scipy
+
