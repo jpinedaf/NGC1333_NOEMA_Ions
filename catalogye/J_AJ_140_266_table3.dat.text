@@ -1,0 +1,53 @@
+
+....Edit 10 rows of file 'table3.dat' with form=a
+#!form=a
+${SID} ${RAh} ${RAm} ${RAs} ${DE-}${DEd} ${DEm} ${DEs} ${Class} ${Seq} ${GID}
+ (hit Return)
+## (from tabmap V6.0 (2016-08-18)) 2022-05-03T13:51:03
+#---------------------------------------------------------------------------
+#-- J/AJ/140/266 NGC 1333 X-ray luminous YSOs properties (Winston+, 2010)
+#--------------------------------------------------------------------------
+#---Table: J/AJ/140/266/table3.dat NGC 1333: IR coordinates and Chandra ID of X-ray detected YSOs  (95 records)
+#Equinox=J2000
+#-------------------------------------------------------------------------------
+#     Label Format Unit   Explanations
+#-------------------------------------------------------------------------------
+#       SID I3     ---    Spitzer identifier from Gutermuth et al. (2008,
+#                          Cat. J/ApJ/674/336) <[GMM2008] NNN> in Simbad
+#       RAh I1     h      Right ascension (J2000)
+#       RAm I2     min    Right ascension (J2000)
+#       RAs F5.2   s      Right ascension (J2000)
+#       DE- A1     ---    Declination sign (J2000)
+#       DEd I2     deg    Declination (J2000)
+#       DEm I2     arcmin Declination (J2000)
+#       DEs F5.2   arcsec Declination (J2000)
+#     Class A3     ---    Classification (1)
+#       Seq I3     ---    Sequential number <[WMW2010] NNN> in Simbad
+#       GID I3     ---    ? Getman et al. (2002, Cat. J/ApJ/575/354)
+#                          identifier, [GFT2002] NNN in Simbad
+#-------------------------------------------------------------------------------
+#Note (1): Evolutionary classification modified from that of Gutermuth et al.
+#   (2008, Cat. J/ApJ/674/336) based on Winston et al. (2007, Cat. J/ApJ/669/493)
+#   as follows:
+#      I = Class I
+#     FS = flat spectrum
+#     II = Class II
+#     TD = transition disk
+#    III = Class III
+#-------------------------------------------------------------------------------
+---------------------------------------
+    R                               
+    A  R         D  D        Cl     
+SID h Am   RAs  Ed Em   DEs ass Seq GID
+---------------------------------------
+ 18 3 28 43.26 +31 17 33.11 I    23   9
+ 25 3 28 58.41 +31 22 17.64 I    89  38
+ 30 3 29 04.94 +31 20 38.59 FS   67  57
+ 31 3 29 07.76 +31 21 57.34 I    82 
+ 34 3 29 09.08 +31 23 05.66 I   103  63
+ 36 3 29 12.94 +31 18 14.55 I    34  71
+ 45 3 28 43.56 +31 17 36.53 FS   26  10
+ 46 3 28 44.08 +31 20 52.89 II  137  11
+ 47 3 28 46.18 +31 16 38.66 II   13  14
+ 48 3 28 47.63 +31 24 06.14 II  110  15
+---------------------------------------
