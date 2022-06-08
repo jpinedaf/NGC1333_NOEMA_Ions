@@ -58,3 +58,39 @@ cube_DCOp_match_TdV.write(file_out_DCOp_TdV, overwrite=True)
 
 cube_HCOp_match_TdV = (cube_HCOp_match_kms.spectral_slab(5.4*u.km/u.s, 10*u.km/u.s)).moment0()
 cube_HCOp_match_TdV.write(file_out_HCOp_TdV, overwrite=True)
+
+
+#
+# header = sub_cube.header
+Herschel_beam = Beam.from_fits_header(fits.getheader('NGC1333_SE_H2.fits'))
+eta_mb = 0.66
+
+file_in_C18O = 'ngc1333_c18o_3-2.fits'
+file_out_C18O = 'NGC1333_C18O_matched.fits'
+file_out_C18O_TdV = 'NGC1333_C18O_matched_TdV.fits'
+
+fits.setval(file_in_C18O, 'BMAJ', value=17.7/3600., before='SPECSYS')
+fits.setval(file_in_C18O, 'BMIN', value=17.7/3600., after='BMAJ')
+fits.setval(file_in_C18O, 'BPA',  value=0.0, after='BMIN')
+fits.setval(file_in_C18O, 'BUNIT', value='K', before='SPECSYS')
+
+# Load second cube
+cube_C18O = SC.read(file_in_C18O)
+cube_C18O_smooth = cube_C18O.convolve_to(Herschel_beam) / eta_mb
+
+hd_C18O = cube_C18O_smooth.header
+key_list = ['NAXIS1', 'NAXIS2', 'CRPIX1', 'CRPIX2',
+            'CDELT1', 'CDELT2', 'CTYPE1', 'CTYPE2',
+            'CRVAL1', 'CRVAL2']
+for key_i in key_list:
+    hd_C18O[key_i] = header[key_i]
+cube_C18O_smooth = cube_C18O_smooth.reproject(hd_C18O)
+
+cube_C18O_smooth.write(file_out_C18O, overwrite=True)
+
+# -1.]
+# v_list_max = [10., 11., 19., 10., 11.5
+cube_C18O_match_kms = (cube_C18O_smooth.with_spectral_unit(u.km/u.s, 
+    velocity_convention='radio')).to(u.K)
+cube_C18O_match_TdV = (cube_C18O_match_kms.spectral_slab(-1.0*u.km/u.s, 11.5*u.km/u.s)).moment0()
+cube_C18O_match_TdV.write(file_out_C18O_TdV, overwrite=True)
