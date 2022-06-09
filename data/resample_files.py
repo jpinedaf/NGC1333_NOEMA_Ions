@@ -45,17 +45,17 @@ hd_target['BPA'] = 0.0
 TdV_C18O_rep, footprint = reproject_interp(file_C18O_TdV, hd_target)
 fits.writeto(file_C18O_TdV_zoom, TdV_C18O_rep, hd_target, overwrite=True)
 
-hd_target['BUNIT'] = ('cm-2', 'N(C18O)')
-Tex = 12.0
-T_18 = 31.6
-N_C18O_rep = 5e12 * Tex * np.exp(T_18/Tex) * TdV_C18O_rep 
-fits.writeto(file_C18O_zoom, N_C18O_rep, hd_target, overwrite=True)
-
-# if Tex = Td
-hd_target['BUNIT'] = ('cm-2', 'N(C18O)')
+# hd_target['BUNIT'] = ('cm-2', 'N(C18O)')
 # Tex = 12.0
-T_18 = 31.6
-N_C18O_Td_rep = 5e12 * Td_rep * np.exp(T_18/Td_rep) * TdV_C18O_rep 
-fits.writeto(file_C18O_Td_zoom, N_C18O_Td_rep, hd_target, overwrite=True)
+# T_18 = 31.6
+# N_C18O_rep = 5e12 * Tex * np.exp(T_18/Tex) * TdV_C18O_rep 
+# fits.writeto(file_C18O_zoom, N_C18O_rep, hd_target, overwrite=True)
+
+# # if Tex = Td
+# hd_target['BUNIT'] = ('cm-2', 'N(C18O)')
+# # Tex = 12.0
+# T_18 = 31.6
+# N_C18O_Td_rep = 5e12 * Td_rep * np.exp(T_18/Td_rep) * TdV_C18O_rep 
+# fits.writeto(file_C18O_Td_zoom, N_C18O_Td_rep, hd_target, overwrite=True)
 
 
