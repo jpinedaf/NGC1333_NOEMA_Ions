@@ -22,32 +22,36 @@ if os.path.exists(file_out_DCOp):
     sub_cube= SC.read(file_out_DCOp)
 else:
     cube = SC.read(file_in_DCOp)
-    cube.allow_huge_operations=True
+    cube.allow_huge_operations = True
     sub_cube = cube.minimal_subcube()
     sub_cube.write(file_out_DCOp)
 
 header = sub_cube.header
 my_beam = Beam.from_fits_header(header)
 
-# Load second cube
+#
+# Load second cube (H13CO+)
+#
 cube_HCOp = SC.read(file_in_HCOp)
-cube_HCOp.allow_huge_operations=True
-# sub_cube_HCOp = cube_HCOp.minimal_subcube()
+cube_HCOp.allow_huge_operations = True
+
 # Smooth to match DCO+ beam
 cube_HCOp_smooth = cube_HCOp.convolve_to(my_beam)
-
+# Modify header
 hd_HCOp = cube_HCOp_smooth.header
 key_list = ['NAXIS1', 'NAXIS2', 'CRPIX1', 'CRPIX2',
             'CDELT1', 'CDELT2', 'CTYPE1', 'CTYPE2',
             'CRVAL1', 'CRVAL2']
 for key_i in key_list:
     hd_HCOp[key_i] = header[key_i]
+# Reproject to match DCO+ data
 cube_HCOp_smooth = cube_HCOp_smooth.reproject(hd_HCOp)
-
 cube_HCOp_smooth.write(file_out_HCOp, overwrite=True)
 
-# TdV = cube_HCOp_smooth.moment0()
 
+#
+# Integrated intensity for H13CO+ and DCO+
+#
 cube_HCOp_match_kms = (cube_HCOp_smooth.with_spectral_unit(u.km/u.s, 
     velocity_convention='radio')).to(u.K)
 cube_DCOp_match_kms = (sub_cube.with_spectral_unit(u.km/u.s, 
@@ -61,8 +65,8 @@ cube_HCOp_match_TdV.write(file_out_HCOp_TdV, overwrite=True)
 
 
 #
-# header = sub_cube.header
-
+# C18O section
+#
 file_in_C18O = 'ngc1333_c18o_3-2.fits'
 file_out_C18O = 'NGC1333_C18O_matched.fits'
 file_out_C18O_TdV = 'NGC1333_C18O_matched_TdV.fits'
@@ -91,22 +95,7 @@ else:
 
     cube_C18O_smooth.write(file_out_C18O, overwrite=True)
 
-# Load second cube
-# cube_C18O = SC.read(file_in_C18O)
-# cube_C18O_smooth = cube_C18O.convolve_to(Herschel_beam) / eta_mb
-
-# hd_C18O = cube_C18O_smooth.header
-# key_list = ['NAXIS1', 'NAXIS2', 'CRPIX1', 'CRPIX2',
-#             'CDELT1', 'CDELT2', 'CTYPE1', 'CTYPE2',
-#             'CRVAL1', 'CRVAL2']
-# for key_i in key_list:
-#     hd_C18O[key_i] = header[key_i]
-# cube_C18O_smooth = cube_C18O_smooth.reproject(hd_C18O)
-
-# cube_C18O_smooth.write(file_out_C18O, overwrite=True)
-
-# -1.]
-# v_list_max = [10., 11., 19., 10., 11.5
+# Load matched cube
 cube_C18O_match_kms = (cube_C18O_smooth.with_spectral_unit(u.km/u.s, 
     velocity_convention='radio')).to(u.K)
 cube_C18O_match_TdV = (cube_C18O_match_kms.spectral_slab(6.0*u.km/u.s, 10.0*u.km/u.s)).moment0()
