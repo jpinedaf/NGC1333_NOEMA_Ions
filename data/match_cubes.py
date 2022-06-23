@@ -19,7 +19,7 @@ file_out_HCOp_TdV = 'NGC1333_H13COp_matched_TdV.fits'
 # analysis
 
 if os.path.exists(file_out_DCOp):
-    sub_cube= SC.read(file_out_DCOp)
+    sub_cube = SC.read(file_out_DCOp)
 else:
     cube = SC.read(file_in_DCOp)
     cube.allow_huge_operations = True
@@ -72,7 +72,7 @@ file_out_C18O = 'NGC1333_C18O_matched.fits'
 file_out_C18O_TdV = 'NGC1333_C18O_matched_TdV.fits'
 
 if os.path.exists(file_out_C18O):
-    cube_C18O_smooth= SC.read(file_out_C18O)
+    cube_C18O_smooth = SC.read(file_out_C18O)
 else:
     # Update FITS header
     fits.setval(file_in_C18O, 'BMAJ', value=17.7/3600., before='SPECSYS')
