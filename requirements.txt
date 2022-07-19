@@ -3,4 +3,5 @@ matplotlib
 astropy > 4.0
 scipy
 git+https://github.com/jpinedaf/molecular_columns@master#egg=molecular_columns
+git+https://github.com/jpinedaf/velocity_tools@master#egg=velocity_tools
 
