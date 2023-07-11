@@ -23,7 +23,6 @@ Dependencies
 * matplotlib (>=3.6)
 * spectral_cube (>=0.6.0)
 * radio_beam (>=0.3)
-* scikit-image (>=0.12.3)
-* scipy (>1.10)
+* scipy (>=1.10)
 * molecular_columns (>=0.1)
 * reproject (>=0.11)

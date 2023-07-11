@@ -1,7 +1,10 @@
 numpy >= 1.24
-matplotlib > 3.6
+matplotlib >= 3.6
 astropy >= 5.0
-scipy > 1.10
+scipy >= 1.10
+radio_beam >=0.3
+reproject >=0.11
+spectral_cube >=0.6.0
 git+https://github.com/jpinedaf/molecular_columns@master#egg=molecular_columns
 git+https://github.com/jpinedaf/velocity_tools@master#egg=velocity_tools
 
