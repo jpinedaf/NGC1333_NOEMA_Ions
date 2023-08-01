@@ -7,4 +7,3 @@ reproject >=0.11
 spectral_cube >=0.6.0
 git+https://github.com/jpinedaf/molecular_columns@master#egg=molecular_columns
 git+https://github.com/jpinedaf/velocity_tools@master#egg=velocity_tools
-

@@ -1,0 +1,17 @@
+First resample make that the interferometric cubes have a common 
+beam and grid. This also takes the C18O data and regrids them 
+to this common grid, this includes the calculation of the 
+integrated intensity and peak line intensity for C18O. 
+This is achieved by running
+    cd data
+    python match_cubes.py
+
+Now we run the calculation of the integrated intensity for the 
+interferometric data and determine the rms and SNR map for each 
+transition. This is achieved by running
+    cd data
+    python QA_TdV_maps.py
+
+Now we estimate the opacity for all 3 lines involved in the 
+calculations. This is done with 
+    python estimate_tau_lines.py
