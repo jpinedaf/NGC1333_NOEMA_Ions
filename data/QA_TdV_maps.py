@@ -1,9 +1,7 @@
 from spectral_cube import SpectralCube as SC
-# from radio_beam import Beam
 from astropy.io import fits
 import astropy.units as u
 import numpy as np
-# import os.path
 
 file_out_DCOp = 'NGC1333_DCOp_matched.fits'
 file_out_HCOp = 'NGC1333_H13COp_matched.fits'
@@ -25,7 +23,7 @@ cube_HCOp = SC.read(file_out_HCOp)
 Tp_DCOp = cube_DCOp.spectral_slab(5.4*u.km/u.s, 10*u.km/u.s).max(axis=0)
 Tp_HCOp = cube_HCOp.spectral_slab(5.4*u.km/u.s, 10*u.km/u.s).max(axis=0)
 
-# cube_HCOp.spectral_slab(5.4*u.km/u.s, 10*u.km/u.s)
+#
 def noise_map(cube):
 	spectral_axis = cube.with_spectral_unit(u.km/u.s).spectral_axis  
 	good_channels = (spectral_axis < 5.4*u.km/u.s) | (spectral_axis > 10*u.km/u.s)  

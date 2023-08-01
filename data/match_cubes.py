@@ -70,6 +70,7 @@ cube_HCOp_match_TdV.write(file_out_HCOp_TdV, overwrite=True)
 file_in_C18O = 'ngc1333_c18o_3-2.fits'
 file_out_C18O = 'NGC1333_C18O_matched.fits'
 file_out_C18O_TdV = 'NGC1333_C18O_matched_TdV.fits'
+file_out_C18O_Tp = 'NGC1333_C18O_Tp.fits'
 
 if os.path.exists(file_out_C18O):
     cube_C18O_smooth = SC.read(file_out_C18O)
@@ -98,5 +99,8 @@ else:
 # Load matched cube
 cube_C18O_match_kms = (cube_C18O_smooth.with_spectral_unit(u.km/u.s, 
     velocity_convention='radio')).to(u.K)
-cube_C18O_match_TdV = (cube_C18O_match_kms.spectral_slab(6.0*u.km/u.s, 10.0*u.km/u.s)).moment0()
+cube_C18O_slab = cube_C18O_match_kms.spectral_slab(6.0*u.km/u.s, 10.0*u.km/u.s)
+cube_C18O_match_TdV = cube_C18O_slab.moment0()
+cube_C18O_match_Tpeak = cube_C18O_slab.max(axis=0)
 cube_C18O_match_TdV.write(file_out_C18O_TdV, overwrite=True)
+cube_C18O_match_Tpeak.write(file_out_C18O_Tp, overwrite=True)
