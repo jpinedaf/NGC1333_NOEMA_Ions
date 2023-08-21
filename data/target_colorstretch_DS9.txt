@@ -1,0 +1,8 @@
+The color stretch that I am aiming to was determined by exploring the stretch in DS9 to match some of the Spitzer Press Release images.
+
+RGB:
+R (IRAC4): 8.50,  100.    log
+G (IRAC2): 0.25,  20.0    log
+B (IRAC1): 0.15,  20.0    log
+
+Unfortunately, these ranges and stretch don't translate perfectly into aplpy stretch. This means that I another manual exploration was needed to best match the images.
