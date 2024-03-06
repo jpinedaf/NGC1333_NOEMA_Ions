@@ -4,7 +4,7 @@ About
 
 This repository includes the scripts used to carry out the analysis of the Electron Fraction (Xe) and Cosmic-Ray Ionization Rate (CRIR) on NGC1333-SE using NOEMA and 30-m data.
 
-The combined cubes used are available here this [link](https://doi.org/10.7910/DVN/X44P8A).
+The combined cubes used are available in this [link](https://doi.org/10.7910/DVN/X44P8A).
 
 it requires the following packages [molecular_columns](https://github.com/jpinedaf/molecular_columns).
 
